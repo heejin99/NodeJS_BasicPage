@@ -1,32 +1,18 @@
-const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const db = require('../config/config')
+const db = require('../config/config')
 
-const { User } = require("../models/User");
-const {auth} = require("../middleware/auth");
+const bcrypt = require('bcrypt')
+const saltRounds = 10 // 10자리 salt를 이용해 비밀번호를 암호화합니다.
 
-// ===================================
-//               User
-// ===================================
-
-
-router.post('/auth', auth, (req, res) => {
-    res.status(200).json({
-        _id: req.user._id,
-        isAuth: true,
-        email: req.user.email,
-        image: req.user.image
-    });
-});
-
-router.post("/signup", (req, res) => {
-    const user = new User(req.body);
-
-    user.save((err, doc) => {
-        if (err) return res.json({success: false, err});
-        return res.status(200).json({success: true})
-    });
-}); 
-
-module.exports = router;
+router.post('/register', (req, res, next) => {
+	const param = [req.body.id, req.body.pw]
+    
+    bcrypt.hash(param[1], saltRounds, (error, hash) => {
+        param[1] = hash
+        db.query('INSERT INTO user(`id`, `pw`) VALUES (?, ?)', param, (err, doc) => {
+            if (err) console.log(err)
+    })
+        
+    })
+    res.send()
+})

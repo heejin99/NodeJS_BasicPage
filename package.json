@@ -1,11 +1,20 @@
 {
-  "name": "basicpage",
+  "name": "nodejs-mysql",
   "version": "1.0.0",
-  "description": "heejin basicpage",
-  "main": "app.js",
+  "description": "nodejs mysql 이용",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1"
+  },
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,15 +25,5 @@
   "bugs": {
     "url": "https://github.com/heejin99/NodeJS_BasicPage/issues"
   },
-  "homepage": "https://github.com/heejin99/NodeJS_BasicPage#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "moment": "^2.29.1",
-    "mongoose": "^5.13.5",
-    "node": "^16.5.0"
-  }
+  "homepage": "https://github.com/heejin99/NodeJS_BasicPage#readme"
 }
